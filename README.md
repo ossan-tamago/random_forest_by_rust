@@ -1,6 +1,7 @@
 # Random Forest
 
 Rustによるランダムフォレストの実装です。
+_Don't work yet._
 
 ## 使い方
 

@@ -16,6 +16,13 @@ pub struct RandomForest {
     n_classes: usize, // クラス数
 }
 impl RandomForest {
+    // ランダムフォレストの初期化
+    pub fn new() -> Self {
+        RandomForest {
+            trees: Vec::new(),
+            n_classes: 0,
+        }
+    }
     // ランダムフォレストをトレーニングデータから生成する関数
     pub fn fit(
         &mut self,
@@ -100,11 +107,13 @@ impl RandomForest {
             let mut values_and_labels: Vec<(f64, usize)> = values
                 .iter()
                 .zip(y.iter())
-                .sorted_by(|a, b| a.0.partial_cmp(b.0).unwrap())
+                .map(|(&value, &label)| (value, label))
                 .collect();
+                // .sorted_by(|a, b| a.0.partial_cmp(b.0).unwrap())
+                // .collect();
             let mut current_entropy = Self::calculate_entropy(
                 &class_counts,
-                class_counts.iter().sum&(),
+                class_counts.iter().sum(),
             );
             let mut n_left = 0;
             let mut n_right = class_counts.iter().sum();
