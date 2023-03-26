@@ -6,6 +6,13 @@ Rustによるランダムフォレストの実装です。
 
 train関数で学習を行います。
 
+### 引数
+
+- features: 特徴量の配列
+- labels: ラベルの配列
+- num_trees: 決定木の数
+- max_depth: 決定木の最大深さ
+
 ```rust
 let random_forest = RandomForest::train(&features, &labels, 10, 2);
 ```
